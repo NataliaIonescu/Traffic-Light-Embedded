@@ -1,0 +1,35 @@
+int red = 13;
+int yel = 4;
+int grn = 2;
+void setup()
+{
+pinMode(red, OUTPUT);
+pinMode(yel, OUTPUT);
+pinMode(grn, OUTPUT);
+Serial.begin(9600);
+}
+
+int t = 0;
+void loop()
+{
+if (t == 0)
+digitalWrite(red, HIGH);
+else if (t == 3000)
+digitalWrite(yel, HIGH);
+else if (t == 4000)
+digitalWrite(red, LOW);
+else if (t == 6000){
+digitalWrite(yel, LOW);
+digitalWrite(grn, HIGH);}
+else if (t == 11000)
+digitalWrite(yel, HIGH);
+else if (t == 12000)
+digitalWrite(grn, LOW);
+else if (t >= 15000){
+t = -10;
+digitalWrite(red, HIGH);
+digitalWrite(yel, LOW);}
+  
+delay(10);
+t += 10;
+}
